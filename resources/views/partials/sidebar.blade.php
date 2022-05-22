@@ -32,15 +32,15 @@
                                 <i class="fas fa-chart-bar"></i>Data Contacts Us</a>
                         </li>
                         <li>
-                            <a href="table.html">
-                                <i class="fas fa-table"></i>Tables</a>
+                            <a href="{{route ('image.index')}}">
+                                <i class="fas fa-table"></i>Tampil Projectku</a>
                         </li>
                         <li>
-                            <a href="form.html">
-                                <i class="far fa-check-square"></i>Forms</a>
+                            <a href="{{route('upload.uploadfile')}}">
+                                <i class="far fa-check-square"></i>Forms Upload Image</a>
                         </li>
                         <li>
-                            <a href="calendar.html">
+                            <a href="calender.html">
                                 <i class="fas fa-calendar-alt"></i>Calendar</a>
                         </li>
                         <li>

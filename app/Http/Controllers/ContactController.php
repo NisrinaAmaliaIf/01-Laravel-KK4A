@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
- use App\Models\Contact;
+use App\Models\Contact;
 
 class ContactController extends Controller
 {
@@ -76,8 +76,8 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
+    
         $contact = Contact::findOrFail($id);
         $contact->update($request->all());
         $contact->save();

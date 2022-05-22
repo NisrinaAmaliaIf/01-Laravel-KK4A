@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ImageController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,13 +26,17 @@ Route::get('/about', function(){
     "title" => "About",
     "nama" => "Nisrina Amalia Iffatunnisa",
     "email" => "3103120165@student.smktelkom-pwt.sch.id",
-    "gambar" => "nisrina.JPG"
+    "gambar" => "fotonisrina.PNG",
+    "alamat" => "Banyumas, Jawa Tengah",
+    "description" => "Saya adalah seorang pelajar SMK Telkom Purwokerto kelas XI RPL 6 Angkatan 28"
     ]);
 });
 
 Route::get('/gallery',function(){
     return view('gallery',[
     "title" => "Gallery",
+    "smk" => "SMK Telkom Purwokerto | 2021-Sekarang",
+    "smp" => "SMP Negeri 1 Kebasen | 2017-2021 "
     ]);
 });
 
@@ -54,4 +60,19 @@ Route::post('/contacts/{id}/update', [ContactController::class, 'update'])->name
 Route::get('/contacts/{id}/destroy', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
 
+Route::get('/image/index', [ImageController::class, 'index'])->name('image.index');
+//buat image
+Route::get('/image/tampil', [ImageController::class, 'tampil'])->name('image.tampil');
+Route::get('/upload',[ImageController::class,'uploadForm']);
+Route::post('/upload',[ImageController::class,'uploadFile'])->name('upload.uploadfile');
+Route::get('/image/{id}/edit', [ImageController::class, 'edit'])->name('image.edit');
+Route::post('/image/{id}/update', [ImageController::class, 'update'])->name('image.update');
+Route::get('/image/{id}/destroy', [ImageController::class, 'destroy'])->name('image.destroy');
+
+//imagecontroller
+//Route::get('/image/index',[ImageController::class,'image.index']);
+//Route::get('/image/addimg',[ImageController::class,'image.create']);
+
+
 });
+Route::get('/gallery', [ImageController::class, 'showgallery'])->name('gallery.showgallery');

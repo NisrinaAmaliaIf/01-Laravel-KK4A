@@ -20,7 +20,7 @@
   <div class="form-floating mb-3">
     <textarea class="form-control" placeholder="Tinggalkan pesan disini" id="floatingTextarea2" style="height: 100px" name= "pesan"></textarea> 
     <label for="floatingTextarea2">Pesan</label>
-</div>
+  </div>
   
 
   <button type="submit" class="btn btn-primary">Kirim</button>
