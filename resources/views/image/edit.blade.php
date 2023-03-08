@@ -13,14 +13,37 @@
                                     <div class="card-body card-block">
                                         <form action="{{route ('image.update', $image->id)}}" method="post" class="" enctype="multipart/form-data">
                                             {{ csrf_field() }}
+
                                             <div class="form-group">
-                                                <label for="nf-email" class=" form-control-label">Nama</label>
-                                                <input type="text" name="teks" class="form-control" value="{{ $image->teks}}">
+                                                <label for="judul" class=" form-control-label">Judul Buku</label>
+                                                <input type="text" name="judul" class="form-control" value="{{ $image->judul}}">
                                             </div>
+
                                             <div class="form-group">
-                                                <label for = "file" >Choose File</label>
+                                                <label for="pengarang" class=" form-control-label">Pengarang</label>
+                                                <input type="text" name="pengarang" class="form-control" value="{{ $image->pengarang}}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="penerbit" class=" form-control-label">Penerbit</label>
+                                                <input type="text" name="penerbit" class="form-control" value="{{ $image->penerbit}}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="tahun" class=" form-control-label">Tahun Terbit</label>
+                                                <input type="text" name="tahun" class="form-control" value="{{ $image->tahun}}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="stok" class=" form-control-label">Stok Buku</label>
+                                                <input type="text" name="stok" class="form-control" value="{{ $image->stok}}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for = "img" >Choose File</label>
                                                 <input type="file" name="img" class="form-control" value="{{ $image->img}}">
                                             </div>
+
                                             <div class="card-footer">
                                                 <button type="submit" class="btn btn-primary btn-sm">
                                                     <i class="fa fa-dot-circle-o"></i> Ubah

@@ -68,6 +68,8 @@ Route::post('/upload',[ImageController::class,'uploadFile'])->name('upload.uploa
 Route::get('/image/{id}/edit', [ImageController::class, 'edit'])->name('image.edit');
 Route::post('/image/{id}/update', [ImageController::class, 'update'])->name('image.update');
 Route::get('/image/{id}/destroy', [ImageController::class, 'destroy'])->name('image.destroy');
+Route::get('/search', [ImageController::class, 'search'])->name('search');
+
 
 //imagecontroller
 //Route::get('/image/index',[ImageController::class,'image.index']);
@@ -75,4 +77,6 @@ Route::get('/image/{id}/destroy', [ImageController::class, 'destroy'])->name('im
 
 
 });
-Route::get('/gallery', [ImageController::class, 'showgallery'])->name('gallery.showgallery');
+Route::get('/gallery', [ImageController::class, 'showgallery'])->name('showgallery');
+Route::get('/export', [ImageController::class, 'export'])->name('export');
+Route::get('/image_detail/{id}', [ImageController::class, 'detail'])->name('detail');

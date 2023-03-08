@@ -33,36 +33,14 @@
                         </li>
                         <li>
                             <a href="{{route ('image.index')}}">
-                                <i class="fas fa-table"></i>Tampil Projectku</a>
+                                <i class="fas fa-table"></i>Data Buku</a>
                         </li>
                         <li>
                             <a href="{{route('upload.uploadfile')}}">
-                                <i class="far fa-check-square"></i>Forms Upload Image</a>
+                                <i class="far fa-check-square"></i>Forms Upload Buku</a>
                         </li>
-                        <li>
-                            <a href="calender.html">
-                                <i class="fas fa-calendar-alt"></i>Calendar</a>
-                        </li>
-                        <li>
-                            <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
-                        </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="login.html">Login</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Register</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Forget Password</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
+                        
+                        <!-- <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-desktop"></i>UI Elements</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -100,7 +78,7 @@
                                     <a href="typo.html">Typography</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
             </div>

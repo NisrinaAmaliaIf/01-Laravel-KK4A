@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Image;
+use Illuminate\Support\Facades\Session;
 
 class ImageController extends Controller
 {
@@ -14,14 +15,36 @@ class ImageController extends Controller
 
     public function uploadFile(Request $request)
     {
+        //return $request->file('img')->store('post-fotosampul');
         $image = Image::create([
-            "teks" =>$request->teks,
+            "judul" =>$request->judul,
+            "pengarang" =>$request->pengarang,
+            "penerbit" =>$request->penerbit,
+            "tahun" =>$request->tahun,
+            "stok" =>$request->stok,
             "img" =>$request->file('img')->getClientOriginalName()
         ]);
+        $request->file('img')->move('coverbuku', $request->file('img')->getClientOriginalName());
         $image->save();
         return redirect('upload');
         
     }
+
+    //membuat controller search
+    // public function search(Request $request)
+    // {
+    //     $title = 'search buku';
+    //     if($request -> has ('search')){
+    //         $images = Image::where('judul', 'LIKE', '%' .$request->search . '%')->get();
+
+    //     }
+    //     else{
+    //         $images = Image::all();
+    //     }
+
+    //     return view('gallery', ['image' => $images]);
+    // }
+
 
 
     public function index()
@@ -32,11 +55,24 @@ class ImageController extends Controller
 
     public function showgallery(Request $request)
     {
-        $image = Image::all();
-        return view('/gallery',
-        [
-            "title" => "Gallery"
-        ], compact('image'));
+        $title = 'search buku';
+        if($request -> has ('search')){
+            $images = Image::where('judul', 'LIKE', '%' .$request->search . '%')->get();
+
+            Session::put('halaman_url', request()->fullUrl());
+        }
+        else{
+            $images = Image::all();
+            Session::put('halaman_url', request()->fullUrl());
+        }
+
+        return view('gallery', compact('images','title'));
+
+        // $image = Image::all();
+        // return view('/gallery',
+        // [
+        //     "title" => "Gallery"
+        // ], compact('image'));
     }
 
 
@@ -49,14 +85,18 @@ class ImageController extends Controller
    public function update(Request $request, $id)
    {
         $image = Image::findOrFail($id);
-        $lokasi_gambar = public_path('projectku/').$image->img;
+        $lokasi_gambar = public_path('coverbuku/').$image->img;
         $nama_awal = $image->img;
 
-        $image->teks      = $request->teks;
+        $image->judul      = $request->judul;
+        $image->pengarang  = $request->pengarang;
+        $image->penerbit    = $request->penerbit;
+        $image->tahun      = $request->tahun;
+        $image->stok     = $request->stok;
         if($request->hasFile('img')) {
             @unlink($lokasi_gambar);
             $image->img =  $request->file('img')->getClientOriginalName();
-            $request->file('img')->move('projectku', $request->file('img')->getClientOriginalName());
+            $request->file('img')->move('coverbuku', $request->file('img')->getClientOriginalName());
         } else {
             $image->img = $nama_awal;
         }
@@ -112,6 +152,14 @@ class ImageController extends Controller
 
         return redirect()->route('image.index');*/
 
+    public function detail($id){
+
+        $images = Image::find($id);
+        $title = 'detail buku';
+
+        return view('/image/detail', compact('images','title'));
+    }
+
     public function destroy($id)
     {
         $image= Image::findOrFail($id);
@@ -119,4 +167,10 @@ class ImageController extends Controller
 
         return redirect()->route('image.index');
     }
+
+    public function export(){
+        $images = Image::all();
+        return view('export', compact('images'));
+    }
+
 }
